@@ -1,0 +1,32 @@
+{
+  "A": {
+    "transitions": [
+      "B",
+      "C"
+    ],
+    "actions": [
+      "action1",
+      "action2"
+    ]
+  },
+  "B": {
+    "transitions": [
+      "C"
+    ],
+    "actions": [
+      "action2"
+    ]
+  },
+  "C": {
+    "transitions": [
+      "D"
+    ],
+    "actions": [
+      "action3"
+    ]
+  },
+  "D": {
+    "transitions": [],
+    "actions": []
+  }
+}
