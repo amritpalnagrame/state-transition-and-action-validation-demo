@@ -23,3 +23,16 @@ class StateMachine {
     }
   }
 }
+
+// Usage example
+const stateMachine = new StateMachine();
+let currentState = 'A';
+
+currentState = stateMachine.transition(currentState, 'B');  // Valid transition
+currentState = stateMachine.transition(currentState, 'C');  // Valid transition
+currentState = stateMachine.transition(currentState, 'D');  // Valid transition
+currentState = stateMachine.transition(currentState, 'B');  // Invalid transition, stays in C
+
+console.log({ currentState });
+
+module.exports = StateMachine;
