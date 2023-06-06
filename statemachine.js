@@ -1,15 +1,13 @@
+const fs = require('fs');
+
 class StateMachine {
-  constructor() {
-    this.transitions = {
-      A: ['B', 'C'],
-      B: ['C'],
-      C: ['D'],
-      D: []
-    };
+  constructor(configFile) {
+    const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+    this.states = config;
   }
 
   isValidTransition(currentState, nextState) {
-    const allowedStates = this.transitions[currentState] || [];
+    const allowedStates = this.states[currentState]?.transitions || [];
     return allowedStates.includes(nextState);
   }
 
@@ -25,7 +23,7 @@ class StateMachine {
 }
 
 // Usage example
-const stateMachine = new StateMachine();
+const stateMachine = new StateMachine('./config.json');
 let currentState = 'A';
 
 currentState = stateMachine.transition(currentState, 'B');  // Valid transition
