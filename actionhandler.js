@@ -1,14 +1,13 @@
+const fs = require('fs');
+
 class ActionHandler {
-  constructor() {
-    this.actionsByState = {
-      A: ['action1', 'action2'],
-      B: ['action2'],
-      C: ['action3']
-    };
+  constructor(configFile) {
+    const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+    this.actionsByState = config;
   }
 
   isValidAction(state, action) {
-    const allowedActions = this.actionsByState[state] || [];
+    const allowedActions = this.actionsByState[state].actions || [];
     return allowedActions.includes(action);
   }
 }
