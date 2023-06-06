@@ -10,6 +10,14 @@ class ActionHandler {
     const allowedActions = this.actionsByState[state].actions || [];
     return allowedActions.includes(action);
   }
+
+  performAction(state, action) {
+    if (this.isValidAction(state, action)) {
+      console.log(`Performing ${action} in state ${state}`);
+    } else {
+      console.log(`Invalid action ${action} in state ${state}`);
+    }
+  }
 }
 
 module.exports = ActionHandler;
