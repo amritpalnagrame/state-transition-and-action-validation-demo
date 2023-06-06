@@ -6,7 +6,12 @@ function StateMachine() {
     D: []
   };
 
+  function isValidTransition(currentState, nextState) {
+    const allowedStates = transitions[currentState] || [];
+    return allowedStates.includes(nextState);
+  }
+
   return {
-    transitions
+    isValidTransition
   };
 }
