@@ -1,17 +1,15 @@
-function StateMachine() {
-  const transitions = {
-    A: ['B', 'C'],
-    B: ['C'],
-    C: ['D'],
-    D: []
-  };
-
-  function isValidTransition(currentState, nextState) {
-    const allowedStates = transitions[currentState] || [];
-    return allowedStates.includes(nextState);
+class StateMachine {
+  constructor() {
+    this.transitions = {
+      A: ['B', 'C'],
+      B: ['C'],
+      C: ['D'],
+      D: []
+    };
   }
 
-  return {
-    isValidTransition
-  };
+  isValidTransition(currentState, nextState) {
+    const allowedStates = this.transitions[currentState] || [];
+    return allowedStates.includes(nextState);
+  }
 }
